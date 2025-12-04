@@ -1,6 +1,8 @@
 package com.example.myroom1p9.view
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.*
@@ -13,6 +15,7 @@ import com.example.myroom1p9.R
 import com.example.myroom1p9.viewmodel.DetailViewModel
 import com.example.myroom1p9.viewmodel.provider.PenyediaViewModel
 import com.example.myroom1p9.view.route.DestinasiDetailSiswa
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -45,3 +48,18 @@ fun DetailSiswaScreen(
             }
         }, modifier = modifier
     ) { innerPadding ->
+        val uiState = viewModel.uiDetailState.collectAsState()
+        val coroutineScope = rememberCoroutineScope()
+        BodyDetailDataSiswa(
+            detailSiswaUiState = uiState.value,
+            onDelete = { coroutineScope.launch {
+                viewModel.deleteSiswa()
+                navigateBack()
+            }},
+            modifier = Modifier
+                .padding(innerPadding)
+                .verticalScroll(rememberScrollState())
+        )
+    }
+}
+
