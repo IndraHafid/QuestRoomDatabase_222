@@ -1,4 +1,4 @@
-Setelah Update
+Setelah delete data
 <img width="1080" height="2160" alt="Screenshot_20251204_132139" src="https://github.com/user-attachments/assets/c0ddf6e4-f8ca-4c42-8d74-1ded19486787" />
 
 Peringatan sebelm hapus data
